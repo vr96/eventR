@@ -3,8 +3,8 @@
 
     <string name="app_name">EventR</string>
     <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
     <string name="action_logout">Log Out</string>
+    <string name="action_settings">Settings</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_section1">Section 1</string>
@@ -23,6 +23,5 @@
     <string name="success_update">Updated successfully!</string>
     <string name="error_updating_status">There was an error updating your status!</string>
     <string name="error_updating_status_title">Sorry!</string>
-
 
 </resources>

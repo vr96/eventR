@@ -15,6 +15,9 @@ import com.google.android.gms.location.LocationRequest;
 import com.parse.Parse;
 import com.parse.ParseUser;
 
+import com.parse.Parse;
+import com.parse.ParseUser;
+
 
 public class MainActivity extends ActionBarActivity implements ActionBar.TabListener {
 
@@ -83,6 +86,20 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                             .setText(mSectionsPagerAdapter.getPageTitle(i))
                             .setTabListener(this));
         }
+<<<<<<< HEAD
+=======
+
+        // Enable Local Datastore.
+        //Parse.enableLocalDatastore(this);
+
+        Parse.initialize(this, getString(R.string.PARSE_APP_ID), getString(R.string.PARSE_KEY));
+
+        //ParseObject testObject = new ParseObject("TestObject");
+        //testObject.put("foo", "bar");
+        //testObject.saveInBackground();
+        if(ParseUser.getCurrentUser() == null)
+            navigateToLogin();
+>>>>>>> 3fc0a502b776764b1d6e8f916ea2f8ecc02420f1
     }
 
 

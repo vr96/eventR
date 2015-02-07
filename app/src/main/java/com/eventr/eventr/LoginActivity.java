@@ -26,6 +26,10 @@ import org.brickred.socialauth.android.SocialAuthListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import com.facebook.Session;
+
+
+import java.util.List;
 
 public class LoginActivity extends Activity {
     SocialAuthAdapter adapter;
@@ -46,7 +50,6 @@ public class LoginActivity extends Activity {
             startActivity(intent);
         }
 
-        //   login = (LoginButton) findViewById(R.id.authButton);
         adapter = new SocialAuthAdapter(new ResponseListener());
 
         facebook_button = (Button)findViewById(R.id.fb_btn);
@@ -59,6 +62,11 @@ public class LoginActivity extends Activity {
                 adapter.authorize(LoginActivity.this, Provider.FACEBOOK);
             }
         });
+        try {
+            token = adapter.getCurrentProvider().getAccessGrant().getKey();
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
     }
 
     public final class ResponseListener implements DialogListener
@@ -108,6 +116,10 @@ public class LoginActivity extends Activity {
                         if (parseUsers.isEmpty()) {
                             signup();
                         } else {
+                    if(e == null){
+                        if(parseUsers.isEmpty()){
+                            signup();
+                        }else{
                             login();
                         }
                     }

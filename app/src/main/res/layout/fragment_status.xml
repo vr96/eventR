@@ -54,6 +54,53 @@
         android:layout_below="@+id/statusTextView"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginBottom="5sp"
+        android:layout_marginLeft="2sp"
+        android:layout_marginRight="5sp"
+        android:layout_marginTop="0sp"/>
+
+    <ImageButton
+        android:layout_width = "80dp"
+        android:layout_height="80dp"
+        android:id="@+id/imageButton"
+        android:scaleType="fitCenter"
+        android:src="@drawable/plainpaper"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/musicButton"
+        android:layout_toEndOf="@+id/musicButton" />
+
+    <ImageButton
+        android:layout_width = "80dp"
+        android:layout_height="80dp"
+        android:id="@+id/musicButton"
+        android:scaleType="fitCenter"
+        android:src="@drawable/musicalnote2"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageButton
+        android:layout_width = "80dp"
+        android:layout_height="80dp"
+        android:id="@+id/partyButton"
+        android:scaleType="fitCenter"
+        android:src="@drawable/canstock"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <ImageButton
+        android:layout_width = "80dp"
+        android:layout_height="80dp"
+        android:id="@+id/gameButton"
+        android:scaleType="fitCenter"
+        android:src="@drawable/game"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <Button
         android:layout_width="match_parent"
@@ -64,5 +111,14 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
+    <ImageButton
+        android:layout_width = "80dp"
+        android:layout_height="80dp"
+        android:id="@+id/balloonButton"
+        android:scaleType="fitCenter"
+        android:src="@drawable/balloons"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/partyButton"
+        android:layout_toEndOf="@+id/partyButton" />
 
 </RelativeLayout>
