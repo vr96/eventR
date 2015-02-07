@@ -9,8 +9,11 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
+import com.parse.FindCallback;
+import com.parse.LogInCallback;
 import com.parse.Parse;
 import com.parse.ParseException;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
@@ -20,6 +23,9 @@ import org.brickred.socialauth.android.SocialAuthAdapter;
 import org.brickred.socialauth.android.SocialAuthAdapter.Provider;
 import org.brickred.socialauth.android.SocialAuthError;
 import org.brickred.socialauth.android.SocialAuthListener;
+
+import java.util.List;
+
 public class LoginActivity extends Activity {
     SocialAuthAdapter adapter;
     Button facebook_button;
@@ -92,31 +98,20 @@ public class LoginActivity extends Activity {
             System.out.println(userName);
             System.out.println(email);
 
-
-            ParseUser newUser = new ParseUser();
-            newUser.setUsername(userName);
-            newUser.setEmail(email);
-            newUser.setPassword("password");
-            newUser.signUpInBackground(new SignUpCallback() {
+            ParseQuery<ParseUser> query = ParseUser.getQuery();
+            query.whereEqualTo("email", email);
+            query.findInBackground(new FindCallback<ParseUser>() {
                 @Override
-                public void done(ParseException e) {
-                    if (e == null) {
-                        // Success!
-                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        startActivity(intent);
-                    } else {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
-                        builder.setMessage(e.getMessage())
-                                .setTitle(R.string.signup_error_title)
-                                .setPositiveButton(android.R.string.ok, null);
-                        AlertDialog dialog = builder.create();
-                        dialog.show();
+                public void done(List<ParseUser> parseUsers, ParseException e) {
+                    if(e == null){
+                        if(parseUsers.isEmpty()){
+                            signup();
+                        }else{
+                            login();
+                        }
                     }
                 }
             });
-
         }
 
         @Override
@@ -124,6 +119,56 @@ public class LoginActivity extends Activity {
             System.out.println(socialAuthError.getMessage());
         }
     }
+
+    private void signup() {
+        ParseUser newUser = new ParseUser();
+        newUser.setUsername(userName);
+        newUser.setEmail(email);
+        newUser.setPassword("password");
+        newUser.signUpInBackground(new SignUpCallback() {
+            @Override
+            public void done(ParseException e) {
+                if (e == null) {
+                    // Success!
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+                } else {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+                    builder.setMessage(e.getMessage())
+                            .setTitle(R.string.signup_error_title)
+                            .setPositiveButton(android.R.string.ok, null);
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                }
+            }
+        });
+    }
+
+    private void login() {
+        ParseUser.logInInBackground(userName, "password", new LogInCallback() {
+            @Override
+            public void done(ParseUser user, ParseException e) {
+                if (e == null) {
+                    //Success!
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+                } else {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+                    //Note: Same as writing builder.set 3 times...
+                    builder.setMessage(e.getMessage())
+                            .setTitle(R.string.login_error_title)
+                            .setPositiveButton(android.R.string.ok, null);
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                }
+            }
+        });
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
