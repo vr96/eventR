@@ -64,8 +64,8 @@
         android:layout_marginTop="0sp"/>
 
     <ImageButton
-        android:layout_width = "80dp"
-        android:layout_height="80dp"
+        android:layout_width = "75dp"
+        android:layout_height="75dp"
         android:id="@+id/imageButton"
         android:scaleType="fitCenter"
         android:src="@drawable/plainpaper"
@@ -74,8 +74,8 @@
         android:layout_toEndOf="@+id/musicButton" />
 
     <ImageButton
-        android:layout_width = "80dp"
-        android:layout_height="80dp"
+        android:layout_width = "75dp"
+        android:layout_height="75dp"
         android:id="@+id/musicButton"
         android:scaleType="fitCenter"
         android:src="@drawable/musicalnote2"
@@ -84,8 +84,8 @@
         android:layout_alignParentStart="true" />
 
     <ImageButton
-        android:layout_width = "80dp"
-        android:layout_height="80dp"
+        android:layout_width = "75dp"
+        android:layout_height="75dp"
         android:id="@+id/partyButton"
         android:scaleType="fitCenter"
         android:src="@drawable/canstock"
@@ -93,8 +93,8 @@
         android:layout_centerHorizontal="true" />
 
     <ImageButton
-        android:layout_width = "80dp"
-        android:layout_height="80dp"
+        android:layout_width = "75dp"
+        android:layout_height="75dp"
         android:id="@+id/gameButton"
         android:scaleType="fitCenter"
         android:src="@drawable/game"
@@ -103,8 +103,8 @@
         android:layout_alignParentEnd="true" />
 
     <ImageButton
-        android:layout_width = "80dp"
-        android:layout_height="80dp"
+        android:layout_width = "75dp"
+        android:layout_height="75dp"
         android:id="@+id/balloonButton"
         android:scaleType="fitCenter"
         android:src="@drawable/balloons"
