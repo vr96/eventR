@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.eventr.eventr"
-        minSdkVersion 8
+        minSdkVersion 9
         targetSdkVersion 21
         versionCode 1
         versionName "1.0"
@@ -19,10 +19,13 @@ android {
     }
 }
 
+repositories { mavenCentral() }
+
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:21.0.3'
     compile files('libs/Parse-1.8.2.jar')
     compile 'com.parse.bolts:bolts-android:1.+'
     compile fileTree(dir: 'libs', include: 'Parse-*.jar')
+    compile 'com.facebook.android:facebook-android-sdk:3.21.1'
 }

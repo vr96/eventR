@@ -1,12 +1,23 @@
 package com.eventr.eventr;
 
+import android.app.Activity;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import com.facebook.Session;
+import android.content.Intent;
+import com.facebook.android.Facebook;
+import com.parse.Parse;
+import com.parse.ParseObject;
+import com.parse.ParseUser;
+import com.parse.ParseFacebookUtils;
+import com.parse.ParseException;
+import android.util.Log;
+import com.parse.LogInCallback;
 
 
-public class LoginActivity extends ActionBarActivity {
+public class LoginActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,5 +46,23 @@ public class LoginActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        ParseFacebookUtils.finishAuthentication(requestCode, resultCode, data);
+        ParseFacebookUtils.logIn(this, new LogInCallback() {
+            @Override
+            public void done(ParseUser user, ParseException err) {
+                if (user == null) {
+                    Log.d("MyApp", "Uh oh. The user cancelled the Facebook login.");
+                } else if (user.isNew()) {
+                    Log.d("MyApp", "User signed up and logged in through Facebook!");
+                } else {
+                    Log.d("MyApp", "User logged in through Facebook!");
+                }
+            }
+        });
     }
 }
