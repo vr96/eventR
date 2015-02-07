@@ -2,6 +2,7 @@ package com.eventr.eventr;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -13,11 +14,14 @@ import org.brickred.socialauth.android.SocialAuthAdapter;
 import org.brickred.socialauth.android.SocialAuthAdapter.Provider;
 import org.brickred.socialauth.android.SocialAuthError;
 import org.brickred.socialauth.android.SocialAuthListener;
+import com.facebook.Session;
+
 public class LoginActivity extends Activity {
     SocialAuthAdapter adapter;
     Button facebook_button;
     String userName = "";
     String email = "";
+    String token = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,13 +32,20 @@ public class LoginActivity extends Activity {
         facebook_button = (Button)findViewById(R.id.fb_btn);
         facebook_button.setBackgroundResource(R.drawable.facebook);
 
-        facebook_button.setOnClickListener(new OnClickListener()
-        {
-            public void onClick(View v)
-            {
+        facebook_button.setOnClickListener(new OnClickListener() {
+            public void onClick(View v) {
                 adapter.authorize(LoginActivity.this, Provider.FACEBOOK);
             }
         });
+        try {
+            token = adapter.getCurrentProvider().getAccessGrant().getKey();
+        } catch (Exception e) {
+            // TODO: handle exception
+            System.out.println("Tuski.");
+        }
+
+        System.out.println(token == null);
+
     }
 
     public final class ResponseListener implements DialogListener

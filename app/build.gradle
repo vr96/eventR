@@ -31,4 +31,5 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile files('libs/socialauth-4.4.jar')
     compile files('libs/socialauth-android-3.2.jar')
+    compile 'com.facebook.android:facebook-android-sdk:3.21.1'
 }
