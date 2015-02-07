@@ -21,6 +21,7 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
+import com.parse.Parse;
 import com.parse.ParseUser;
 
 import java.text.DateFormat;
@@ -42,8 +43,8 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
     SectionsPagerAdapter mSectionsPagerAdapter;
     private GoogleApiClient mGoogleApiClient;
 
-    public static double mLatitude = 0.0;
-    public static double mLongitude = 0.0;
+    public static double mLatitude;
+    public static double mLongitude = -1.0;
 
     public static LocationRequest mLocationRequest;
     public static Location mLastLocation;
@@ -59,7 +60,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        
+        Parse.initialize(this, getString(R.string.PARSE_APP_ID), getString(R.string.PARSE_KEY));
 
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addConnectionCallbacks(this)
