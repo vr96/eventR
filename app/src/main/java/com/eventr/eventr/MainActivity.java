@@ -14,6 +14,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.parse.Parse;
+import com.parse.ParseUser;
+
 
 public class MainActivity extends ActionBarActivity implements ActionBar.TabListener {
 
@@ -74,13 +77,13 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         // Enable Local Datastore.
         //Parse.enableLocalDatastore(this);
 
-        //Parse.initialize(this, getString(R.string.PARSE_APP_ID), getString(R.string.PARSE_KEY));
+        Parse.initialize(this, getString(R.string.PARSE_APP_ID), getString(R.string.PARSE_KEY));
 
         //ParseObject testObject = new ParseObject("TestObject");
         //testObject.put("foo", "bar");
         //testObject.saveInBackground();
-
-        navigateToLogin();
+        if(ParseUser.getCurrentUser() == null)
+            navigateToLogin();
     }
 
 

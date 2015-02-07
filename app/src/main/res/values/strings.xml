@@ -14,6 +14,9 @@
     <string name="main_tab_status">Status</string>
     <string name="main_tab_map">Map</string>
     <string name="radius_text_view">Search Radius: 5 miles</string>
+    <string name="signup_error_title">Sign up failed!</string>
+    <string name="PARSE_APP_ID">bgFcNUk6xTL7SXPSvBEc2VzMed0RDk92TfgpvPNE</string>
+    <string name="PARSE_KEY">mQHLZuhZ7vI12DshuE7Xo021Aq9zTkqpM4yBpiwA</string>
 
 
 </resources>
