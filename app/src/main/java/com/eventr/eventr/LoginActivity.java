@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.parse.FindCallback;
 import com.parse.LogInCallback;
@@ -34,7 +35,7 @@ import java.util.List;
 
 public class LoginActivity extends Activity {
     SocialAuthAdapter adapter;
-    Button facebook_button;
+    ImageButton facebook_button;
     String userName = "";
     String email = "";
     String token = null;
@@ -55,9 +56,7 @@ public class LoginActivity extends Activity {
      //   login = (LoginButton) findViewById(R.id.authButton);
         adapter = new SocialAuthAdapter(new ResponseListener());
 
-        facebook_button = (Button)findViewById(R.id.fb_btn);
-        facebook_button.setBackgroundResource(R.drawable.facebook);
-
+        facebook_button = (ImageButton)findViewById(R.id.fb_btn);
         facebook_button.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 adapter.authorize(LoginActivity.this, Provider.FACEBOOK);
@@ -105,8 +104,6 @@ public class LoginActivity extends Activity {
             userName = profilemap.getFirstName() + " " +
                     profilemap.getLastName();
             email = profilemap.getEmail();
-            System.out.println(userName);
-            System.out.println(email);
 
             ParseQuery<ParseUser> query = ParseUser.getQuery();
             query.whereEqualTo("email", email);

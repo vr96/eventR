@@ -13,6 +13,10 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 
 public class MapFragment extends Fragment implements GoogleApiClient.ConnectionCallbacks,
@@ -23,7 +27,7 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
     public LocationRequest mLocationRequest;
     LocationListener listener;
     public static double latitude, longitude;
-
+   // GoogleMap mMap = null;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -49,7 +53,7 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
     public void onResume() {
         super.onResume();
         mGoogleApiClient.connect();
-
+       // setUpMap();
     }
 
     @Override
@@ -84,9 +88,13 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
         Log.d(TAG, location.toString());
         latitude = location.getLatitude();
         longitude = location.getLongitude();
-        System.out.println(latitude);
-        System.out.println(longitude);
-
+     /*   LatLng latLng = new LatLng(latitude, longitude);
+        MarkerOptions options = new MarkerOptions()
+                .position(latLng)
+                .title("You are here!");
+        mMap.addMarker(options);
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+    */
     }
 
     @Override
@@ -103,5 +111,10 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
     public void onLocationChanged(Location location) {
         handleNewLocation(location);
     }
-
+   /* private void setUpMap() {
+        if (mMap == null){
+        mMap.addMarker(new MarkerOptions().position(new LatLng(0,
+                0)).title("Marker"));
+        }
+    } */
 }
