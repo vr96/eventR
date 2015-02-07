@@ -10,6 +10,10 @@ import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import com.parse.ParseObject;
+
+import java.util.List;
+
 
 public class StatusFragment extends Fragment {
 
@@ -19,6 +23,9 @@ public class StatusFragment extends Fragment {
     protected EditText mStatusText;
 
     protected int radius;
+
+
+    protected List<ParseObject> status;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
