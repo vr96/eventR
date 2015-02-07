@@ -68,6 +68,10 @@ public class Event {
         return title;
     }
 
+    int getSize(){
+        return groupNames.size();
+    }
+
     int[] getTopicCounts(){
         return topicCounts;
     }
