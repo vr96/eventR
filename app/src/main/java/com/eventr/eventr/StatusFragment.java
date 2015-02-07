@@ -28,7 +28,7 @@ import java.util.List;
 public class StatusFragment extends Fragment {
 
     public static final String[] categories = {"Study", "Music", "Game", "Party", "Balloons"};
-    public static int categoryNumber;
+    public static int categoryNumber = -1;
 
     protected TextView mBubbleTextView;
     protected SeekBar mSeekBar;
@@ -63,7 +63,31 @@ public class StatusFragment extends Fragment {
         mStudy = (ImageButton)rootView.findViewById(R.id.studyButton);
         mGames = (ImageButton)rootView.findViewById(R.id.gameButton);
 
+        mStudy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                categoryNumber = 0;
+            }
+        });
+        mMusic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                categoryNumber = 1;
+            }
+        });
         mParty.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                categoryNumber = 2;
+            }
+        });
+        mGames.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                categoryNumber = 3;
+            }
+        });
+        mBloons.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 categoryNumber = 4;
@@ -114,15 +138,15 @@ public class StatusFragment extends Fragment {
                     @Override
                     public void done(ParseUser user, ParseException e) {
                         if(e == null){
-                            ParseGeoPoint point = new ParseGeoPoint(mLat,
-                                    mLong);
+                            ParseGeoPoint point = new ParseGeoPoint(MapFragment.latitude,
+                                    MapFragment.longitude);
                             user.put(ParseConstants.KEY_LOCATION, point);
                             user.put(ParseConstants.KEY_RANGE, radius);
                             user.put(ParseConstants.KEY_STATUS_MESSAGE, mStatusText.getText().toString());
                             user.put(ParseConstants.KEY_USER_ID, ParseUser.getCurrentUser().getObjectId());
                             user.put(ParseConstants.KEY_USERNAME, ParseUser.getCurrentUser().getUsername());
                             user.put(ParseConstants.KEY_PUBLIC, mIsPublic);
-
+                            user.put(ParseConstants.KEY_CATEGORY, categoryNumber);
                             ArrayList<String> followersList = new ArrayList<String>();
                             user.put(ParseConstants.KEY_FOLLOWER_IDS, followersList);
                             user.saveInBackground();
