@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -26,11 +27,21 @@ import java.util.List;
 
 public class StatusFragment extends Fragment {
 
+    public static final String[] categories = {"Study", "Music", "Game", "Party", "Balloons"};
+    public static int categoryNumber;
+
     protected TextView mBubbleTextView;
     protected SeekBar mSeekBar;
     protected Switch mPrivacySwitch;
     protected EditText mStatusText;
     protected Button mUpdateButton;
+
+    protected ImageButton mStudy;
+    protected ImageButton mMusic;
+    protected ImageButton mParty;
+    protected ImageButton mGames;
+    protected ImageButton mBloons;
+
 
     protected double mLong = MapFragment.longitude;
     protected double mLat = MapFragment.latitude;
@@ -45,6 +56,20 @@ public class StatusFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_status, container, false);
+
+        mParty = (ImageButton)rootView.findViewById(R.id.partyButton);
+        mMusic = (ImageButton)rootView.findViewById(R.id.musicButton);
+        mBloons = (ImageButton)rootView.findViewById(R.id.balloonButton);
+        mStudy = (ImageButton)rootView.findViewById(R.id.studyButton);
+        mGames = (ImageButton)rootView.findViewById(R.id.gameButton);
+
+        mParty.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                categoryNumber = 4;
+            }
+        });
+
         mBubbleTextView = (TextView)rootView.findViewById(R.id.bubbleSizeTextView);
         mSeekBar = (SeekBar)rootView.findViewById(R.id.seekBar);
         mPrivacySwitch = (Switch)rootView.findViewById(R.id.privacySwitch);
