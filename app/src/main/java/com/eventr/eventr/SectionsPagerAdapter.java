@@ -28,7 +28,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
             case 0:
                 return new StatusFragment();
             case 1:
-                return new StatusFragment();
+                return new MapFragment();
         }
         return null;
     }
