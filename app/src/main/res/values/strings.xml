@@ -13,6 +13,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="main_tab_status">Status</string>
     <string name="main_tab_map">Map</string>
+    <string name="radius_text_view">Search Radius: 5 miles</string>
 
 
 </resources>

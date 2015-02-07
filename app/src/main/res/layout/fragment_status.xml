@@ -9,7 +9,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Bubble Size: 5 miles"
+        android:text="@string/radius_text_view"
         android:id="@+id/bubbleSizeTextView"
         android:layout_gravity="left|top"
         android:layout_alignParentLeft="true"
@@ -45,52 +45,15 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
-    <TabHost
-        android:layout_width="fill_parent"
+    <EditText
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/tabHost"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:orientation="vertical">
-
-            <FrameLayout
-                android:id="@android:id/tabcontent"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent">
-
-                <LinearLayout
-                    android:id="@+id/tab1"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:orientation="vertical"></LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/tab2"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:orientation="vertical"></LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/tab3"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:orientation="vertical"></LinearLayout>
-            </FrameLayout>
-        </LinearLayout>
-    </TabHost>
-
-    <TabWidget
-        android:id="@android:id/tabs"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:hint="Status message"
+        android:ems="10"
+        android:id="@+id/statusEditText"
         android:layout_below="@+id/statusTextView"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"></TabWidget>
+        android:layout_alignParentStart="true" />
 
 
 </RelativeLayout>
