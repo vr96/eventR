@@ -65,11 +65,7 @@ public class LoginActivity extends Activity {
             token = adapter.getCurrentProvider().getAccessGrant().getKey();
         } catch (Exception e) {
             // TODO: handle exception
-            System.out.println("Tuski.");
         }
-
-        System.out.println(token == null);
-
     }
 
     public final class ResponseListener implements DialogListener
