@@ -63,6 +63,15 @@
         android:layout_marginRight="5sp"
         android:layout_marginTop="0sp"/>
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Update"
+        android:id="@+id/updateButton"
+        android:layout_below="@+id/statusEditText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
     <ImageButton
         android:layout_width = "75dp"
         android:layout_height="75dp"

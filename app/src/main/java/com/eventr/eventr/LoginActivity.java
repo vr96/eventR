@@ -14,6 +14,7 @@ import com.parse.FindCallback;
 import com.parse.LogInCallback;
 import com.parse.Parse;
 import com.parse.ParseException;
+import com.parse.ParseGeoPoint;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
@@ -28,6 +29,7 @@ import org.brickred.socialauth.android.SocialAuthListener;
 import com.facebook.Session;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class LoginActivity extends Activity {
@@ -133,6 +135,15 @@ public class LoginActivity extends Activity {
         newUser.setUsername(userName);
         newUser.setEmail(email);
         newUser.setPassword("password");
+        newUser.put(ParseConstants.KEY_RANGE, 0);
+        newUser.put(ParseConstants.KEY_STATUS_MESSAGE, "");
+        newUser.put(ParseConstants.KEY_PUBLIC, false);
+        ParseGeoPoint point = new ParseGeoPoint(0, 0);
+        newUser.put(ParseConstants.KEY_LOCATION, point);
+        ArrayList<String> followersList = new ArrayList<String>();
+        newUser.put(ParseConstants.KEY_FOLLOWER_IDS, followersList);
+
+
         newUser.signUpInBackground(new SignUpCallback() {
             @Override
             public void done(ParseException e) {

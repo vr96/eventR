@@ -1,18 +1,19 @@
 package com.eventr.eventr;
 
 import android.content.Intent;
+import android.location.Location;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
+
+import com.google.android.gms.location.LocationRequest;
+import com.parse.Parse;
+import com.parse.ParseUser;
 
 import com.parse.Parse;
 import com.parse.ParseUser;
@@ -30,6 +31,11 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
      */
     SectionsPagerAdapter mSectionsPagerAdapter;
 
+    public static double mLatitude = 9.0;
+    public static double mLongitude = -1.0;
+    public static LocationRequest mLocationRequest;
+    public static Location mLastLocation;
+
     /**
      * The {@link ViewPager} that will host the section contents.
      */
@@ -39,6 +45,11 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Parse.initialize(this, getString(R.string.PARSE_APP_ID), getString(R.string.PARSE_KEY));
+        if(ParseUser.getCurrentUser() == null){
+            navigateToLogin();
+        }
 
         // Set up the action bar.
         final ActionBar actionBar = getSupportActionBar();
@@ -55,9 +66,11 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         // When swiping between different sections, select the corresponding
         // tab. We can also use ActionBar.Tab#select() to do this if we have
         // a reference to the Tab.
+        mViewPager.setOffscreenPageLimit(0);
         mViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {
+
                 actionBar.setSelectedNavigationItem(position);
             }
         });
@@ -124,39 +137,6 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 
     @Override
     public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
-    }
-
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-    public static class PlaceholderFragment extends Fragment {
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
-        private static final String ARG_SECTION_NUMBER = "section_number";
-
-        /**
-         * Returns a new instance of this fragment for the given section
-         * number.
-         */
-        public static PlaceholderFragment newInstance(int sectionNumber) {
-            PlaceholderFragment fragment = new PlaceholderFragment();
-            Bundle args = new Bundle();
-            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
-            fragment.setArguments(args);
-            return fragment;
-        }
-
-        public PlaceholderFragment() {
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-            return rootView;
-        }
     }
 
     private void navigateToLogin() {
