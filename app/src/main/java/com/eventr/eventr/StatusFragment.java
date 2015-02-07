@@ -39,7 +39,8 @@ public class StatusFragment extends Fragment {
         //similar to data call: remove once in parse
         radius = 5;
         mSeekBar.setProgress(radius * 20);
-        mBubbleTextView.setText("Search Radius: " + String.valueOf(radius) + " miles");
+        mBubbleTextView.setText("Search Radius: " + String.valueOf(radius) + " miles"
+         + " Coordinates = (" + MainActivity.mLatitude + ", " + MainActivity.mLongitude + ")");
 
         mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
 
@@ -48,7 +49,8 @@ public class StatusFragment extends Fragment {
                                           boolean fromUser) {
                 // TODO Auto-generated method stub
                 radius = progress/20;
-                mBubbleTextView.setText("Search Radius: " + String.valueOf(radius) + " miles");
+                mBubbleTextView.setText("Search Radius: " + String.valueOf(radius) + " miles"
+                +" Coordinates = ("+ MainActivity.mLatitude + ", " + MainActivity.mLongitude + ")");
             }
 
             @Override
