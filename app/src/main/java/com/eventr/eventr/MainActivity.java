@@ -14,6 +14,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.parse.Parse;
+import com.parse.ParseObject;
+
 import java.util.Locale;
 
 
@@ -72,6 +75,15 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
                             .setText(mSectionsPagerAdapter.getPageTitle(i))
                             .setTabListener(this));
         }
+
+        // Enable Local Datastore.
+        Parse.enableLocalDatastore(this);
+
+        Parse.initialize(this, "bgFcNUk6xTL7SXPSvBEc2VzMed0RDk92TfgpvPNE", "mQHLZuhZ7vI12DshuE7Xo021Aq9zTkqpM4yBpiwA");
+
+        ParseObject testObject = new ParseObject("TestObject");
+        testObject.put("foo", "bar");
+        testObject.saveInBackground();
     }
 
 
