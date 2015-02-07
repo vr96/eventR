@@ -68,7 +68,7 @@
         android:layout_height="80dp"
         android:id="@+id/imageButton"
         android:scaleType="fitCenter"
-        android:src="@drawable/plainprintinpapersheetsclipart23315"
+        android:src="@drawable/plainpaper"
         android:layout_alignParentBottom="true"
         android:layout_toRightOf="@+id/musicButton"
         android:layout_toEndOf="@+id/musicButton" />
@@ -88,7 +88,7 @@
         android:layout_height="80dp"
         android:id="@+id/partyButton"
         android:scaleType="fitCenter"
-        android:src="@drawable/canstock7508985"
+        android:src="@drawable/canstock"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 
