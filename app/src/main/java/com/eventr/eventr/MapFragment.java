@@ -1,8 +1,6 @@
 package com.eventr.eventr;
 
-import android.app.Activity;
 import android.location.Location;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -12,8 +10,8 @@ import android.view.ViewGroup;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationListener;
+import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 
 
@@ -24,7 +22,7 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
     public static final String TAG = MapFragment.class.getSimpleName();
     public LocationRequest mLocationRequest;
     LocationListener listener;
-    double latitude, longitude;
+    public static double latitude, longitude;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

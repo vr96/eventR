@@ -32,8 +32,8 @@ public class StatusFragment extends Fragment {
     protected EditText mStatusText;
     protected Button mUpdateButton;
 
-    protected double mLong = 0;
-    protected double mLat = 0;
+    protected double mLong = MapFragment.longitude;
+    protected double mLat = MapFragment.latitude;
     protected int radius;
     protected boolean mIsPublic;
 
@@ -66,8 +66,7 @@ public class StatusFragment extends Fragment {
                 // TODO Auto-generated method stub
                 radius = progress/20;
                 mBubbleTextView.setText("Search Radius: " + radius + " miles"
-                        +" Coordinates = ("+ mLong + ", " +
-                        "" + mLat + ")");
+                        +" Coordinates = ("+ MapFragment.latitude + ", " + MapFragment.longitude + ")");
             }
 
             @Override
@@ -126,7 +125,7 @@ public class StatusFragment extends Fragment {
             mLat = ((ParseGeoPoint) currentUser.get(ParseConstants.KEY_LOCATION)).getLatitude();
             mLat = ((ParseGeoPoint) currentUser.get(ParseConstants.KEY_LOCATION)).getLatitude();
             mBubbleTextView.setText("Search Radius: " + radius + " miles"
-                    + " Coordinates = (" + mLat + ", " + mLong + ")");
+                    + " Coordinates = (" + MapFragment.latitude + ", " + MapFragment.longitude + ")");
             mPrivacySwitch.setChecked((boolean) currentUser.get(ParseConstants.KEY_PUBLIC));
         }else{
             Intent intent = new Intent(getActivity(), LoginActivity.class);
