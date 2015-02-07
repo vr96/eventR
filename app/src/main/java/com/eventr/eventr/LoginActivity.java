@@ -24,6 +24,7 @@ import org.brickred.socialauth.android.SocialAuthAdapter.Provider;
 import org.brickred.socialauth.android.SocialAuthError;
 import org.brickred.socialauth.android.SocialAuthListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class LoginActivity extends Activity {
@@ -103,10 +104,10 @@ public class LoginActivity extends Activity {
             query.findInBackground(new FindCallback<ParseUser>() {
                 @Override
                 public void done(List<ParseUser> parseUsers, ParseException e) {
-                    if(e == null){
-                        if(parseUsers.isEmpty()){
+                    if (e == null) {
+                        if (parseUsers.isEmpty()) {
                             signup();
-                        }else{
+                        } else {
                             login();
                         }
                     }
@@ -125,6 +126,14 @@ public class LoginActivity extends Activity {
         newUser.setUsername(userName);
         newUser.setEmail(email);
         newUser.setPassword("password");
+        newUser.put(ParseConstants.KEY_RANGE, 0);
+        newUser.put(ParseConstants.KEY_STATUS_MESSAGE, "");
+        newUser.put(ParseConstants.KEY_USER_ID, ParseUser.getCurrentUser().getObjectId());
+        newUser.put(ParseConstants.KEY_USERNAME, ParseUser.getCurrentUser().getUsername());
+        newUser.put(ParseConstants.KEY_PUBLIC, false);
+
+        ArrayList<String> followersList = new ArrayList<String>();
+        newUser.put(ParseConstants.KEY_FOLLOWER_IDS, followersList);
         newUser.signUpInBackground(new SignUpCallback() {
             @Override
             public void done(ParseException e) {

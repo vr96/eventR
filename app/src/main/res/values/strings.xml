@@ -19,6 +19,10 @@
     <string name="PARSE_KEY">mQHLZuhZ7vI12DshuE7Xo021Aq9zTkqpM4yBpiwA</string>
     <string name="signup_error_title">Oops! Signup failed.</string>
     <string name="login_error_title">Oops! Login failed.</string>
+    <string name="update_button_label">Update</string>
+    <string name="success_update">Updated successfully!</string>
+    <string name="error_updating_status">There was an error updating your status!</string>
+    <string name="error_updating_status_title">Sorry!</string>
 
 
 </resources>
