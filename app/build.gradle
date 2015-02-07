@@ -24,9 +24,11 @@ repositories { mavenCentral() }
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile files('libs/Parse-1.8.2.jar')
-    compile fileTree(dir: 'libs', include: 'Parse-*.jar')
+    compile fileTree(include: 'Parse-*.jar', dir: 'libs')
     compile 'com.android.support:appcompat-v7:21.0.3'
     compile 'com.parse.bolts:bolts-android:1.+'
-    compile 'com.facebook.android:facebook-android-sdk:3.21.1'
     compile 'com.android.support:support-v4:21.0.3'
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile files('libs/socialauth-4.4.jar')
+    compile files('libs/socialauth-android-3.2.jar')
 }
