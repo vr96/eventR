@@ -66,7 +66,8 @@ public class StatusFragment extends Fragment {
                 // TODO Auto-generated method stub
                 radius = progress/20;
                 mBubbleTextView.setText("Search Radius: " + radius + " miles"
-                        +" Coordinates = ("+ MapFragment.latitude + ", " + MapFragment.longitude + ")");
+                        +" Coordinates = ("+ MapsFragment.latitude + ", " +
+                        "" + MapsFragment.longitude + ")");
             }
 
             @Override
@@ -89,8 +90,9 @@ public class StatusFragment extends Fragment {
                     @Override
                     public void done(ParseUser user, ParseException e) {
                         if(e == null){
-                            ParseGeoPoint point = new ParseGeoPoint(mLat,
-                                    mLong);
+                            ParseGeoPoint point = new ParseGeoPoint
+                                    (MapsFragment.latitude,
+                                    MapsFragment.longitude);
                             user.put(ParseConstants.KEY_LOCATION, point);
                             user.put(ParseConstants.KEY_RANGE, radius);
                             user.put(ParseConstants.KEY_STATUS_MESSAGE, mStatusText.getText().toString());
@@ -125,7 +127,8 @@ public class StatusFragment extends Fragment {
             mLat = ((ParseGeoPoint) currentUser.get(ParseConstants.KEY_LOCATION)).getLatitude();
             mLat = ((ParseGeoPoint) currentUser.get(ParseConstants.KEY_LOCATION)).getLatitude();
             mBubbleTextView.setText("Search Radius: " + radius + " miles"
-                    + " Coordinates = (" + MapFragment.latitude + ", " + MapFragment.longitude + ")");
+                    + " Coordinates = (" + MapsFragment.latitude + ", " +
+                    "" + MapsFragment.longitude + ")");
             mPrivacySwitch.setChecked((boolean) currentUser.get(ParseConstants.KEY_PUBLIC));
         }else{
             Intent intent = new Intent(getActivity(), LoginActivity.class);

@@ -73,10 +73,10 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
         if (location == null) {
             LocationServices.FusedLocationApi.requestLocationUpdates
                     (mGoogleApiClient, mLocationRequest, this);
-            latitude = location.getLatitude();
-            longitude = location.getLongitude();
-            System.out.println(latitude);
-            System.out.println(longitude);
+          //  latitude = location.getLatitude();
+         //   longitude = location.getLongitude();
+         //   System.out.println(latitude);
+         //   System.out.println(longitude);
         }
         else {
             handleNewLocation(location);

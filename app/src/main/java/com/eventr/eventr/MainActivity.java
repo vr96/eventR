@@ -119,6 +119,9 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
             ParseUser.logOut();
             navigateToLogin();
             return true;
+        } else if(id == R.id.map_action){
+            Intent intent = new Intent(this, MapsFragment.class);
+            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);

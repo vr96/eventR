@@ -12,5 +12,5 @@ public final class ParseConstants {
     public static final String KEY_USERNAME = "username";
     public static final String KEY_PUBLIC = "public";
     public static final String KEY_FOLLOWER_IDS = "followerIds";
-
+    public static final String KEY_CATEGORY = "category";
 }

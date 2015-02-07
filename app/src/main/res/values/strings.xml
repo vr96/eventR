@@ -19,6 +19,6 @@
     <string name="login_error_title">Log in failed!</string>
     <string name="PARSE_APP_ID">bgFcNUk6xTL7SXPSvBEc2VzMed0RDk92TfgpvPNE</string>
     <string name="PARSE_KEY">mQHLZuhZ7vI12DshuE7Xo021Aq9zTkqpM4yBpiwA</string>
-
+    <string name="title_activity_maps_fragment">Map</string>
 
 </resources>

@@ -5,4 +5,8 @@
         android:title="@string/action_logout"
         android:orderInCategory="100"
         app:showAsAction="always" />
+    <item android:id="@+id/map_action"
+          android:title="Map"
+          android:orderInCategory="100"
+          app:showAsAction="always" />
 </menu>
